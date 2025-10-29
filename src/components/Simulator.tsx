@@ -81,11 +81,52 @@ const Simulator = () => {
     }
   };
 
-  const handleFinish = () => {
-    toast({
-      title: "Simulação enviada!",
-      description: "Em breve entraremos em contato via WhatsApp.",
-    });
+  const handleFinish = async () => {
+    const webhookUrl = "https://hook.us1.make.com/oot99hzy5i0ycokb712jr592sxv4b2pt";
+    
+    // Prepare data for webhook
+    const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    const downPaymentValue = formData.hasDownPayment === "Sim" ? formData.downPaymentAmount : "Não tem";
+    
+    const webhookData = {
+      "Data de Entrada": today,
+      "Nome Completo": formData.fullName.trim(),
+      "WhatsApp": formData.whatsapp,
+      "Tipo de Bem": formData.propertyType,
+      "Valor Pretendido (R$)": formData.creditAmount,
+      "Valor de Entrada (R$)": downPaymentValue,
+      "Parcela Ideal (R$)": formData.monthlyPayment,
+      "Cidade": formData.city.trim()
+    };
+
+    try {
+      console.log("Enviando dados para webhook:", webhookData);
+      
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(webhookData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Simulação enviada!",
+          description: "Em breve entraremos em contato via WhatsApp.",
+        });
+      } else {
+        throw new Error("Erro ao enviar dados");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar para webhook:", error);
+      toast({
+        title: "Erro ao enviar simulação",
+        description: "Por favor, tente novamente.",
+        variant: "destructive",
+      });
+      return;
+    }
     
     // Reset form
     setFormData({
