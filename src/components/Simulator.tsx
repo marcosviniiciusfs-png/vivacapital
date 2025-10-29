@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -27,6 +28,7 @@ interface SimulatorData {
 
 const Simulator = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState<SimulatorData>({
     propertyType: "",
@@ -118,10 +120,21 @@ const Simulator = () => {
       });
 
       if (response.ok) {
-        toast({
-          title: "Simulação enviada!",
-          description: "Em breve entraremos em contato via WhatsApp.",
+        // Reset form
+        setFormData({
+          propertyType: "",
+          creditAmount: "",
+          hasDownPayment: "",
+          downPaymentAmount: "",
+          monthlyPayment: "",
+          city: "",
+          fullName: "",
+          whatsapp: ""
         });
+        setCurrentStep(0);
+        
+        // Redirect to thank you page
+        navigate("/obrigado");
       } else {
         throw new Error("Erro ao enviar dados");
       }
@@ -134,19 +147,6 @@ const Simulator = () => {
       });
       return;
     }
-    
-    // Reset form
-    setFormData({
-      propertyType: "",
-      creditAmount: "",
-      hasDownPayment: "",
-      downPaymentAmount: "",
-      monthlyPayment: "",
-      city: "",
-      fullName: "",
-      whatsapp: ""
-    });
-    setCurrentStep(0);
   };
 
   const renderStep = () => {
