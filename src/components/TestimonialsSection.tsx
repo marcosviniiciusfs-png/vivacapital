@@ -118,7 +118,7 @@ const TestimonialsSection = () => {
                     <img
                       src={image}
                       alt={`Cliente contemplado ${index + 1}`}
-                      className="w-full h-64 md:h-80 object-cover transition-transform duration-300 hover:scale-105"
+                      className="w-full h-64 md:h-80 object-cover object-top transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                 </CarouselItem>
