@@ -91,7 +91,7 @@ const Simulator = () => {
   };
 
   const handleFinish = async () => {
-    const webhookUrl = "https://hook.us1.make.com/oot99hzy5i0ycokb712jr592sxv4b2pt";
+    const webhookUrl = "https://hook.us1.make.com/m60b3l3wcknirc4fc7ezy3553yso5jih";
     
     // Prepare data for webhook
     const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
