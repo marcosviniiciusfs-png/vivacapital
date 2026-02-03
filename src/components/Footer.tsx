@@ -1,5 +1,6 @@
-import { Phone, MapPin, Clock, Facebook } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import maltaLogo from "@/assets/malta-logo.png";
+import facebookIcon from "@/assets/facebook.png";
 
 const Footer = () => {
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
                 className="text-white hover:text-white/80 transition-colors"
                 aria-label="Facebook da Malta Consórcios"
               >
-                <Facebook className="w-8 h-8" />
+                <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
             </div>
           </div>
