@@ -1,5 +1,6 @@
 import { Phone, MapPin, Clock } from "lucide-react";
-import multimarcasLogo from "@/assets/multimarcas-logo.png";
+import logoFooter1 from "@/assets/logo-footer-1.png";
+import logoBancoCentral from "@/assets/logo-banco-central.png";
 import facebookIcon from "@/assets/facebook.png";
 
 const Footer = () => {
@@ -9,8 +10,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo e Descrição */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={multimarcasLogo} alt="Multimarcas" className="h-12 w-auto" />
+            <div className="flex items-center gap-4 mb-4">
+              <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-12 w-auto" />
+              <img src={logoFooter1} alt="Malta Consórcios" className="h-12 w-auto" />
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a 
