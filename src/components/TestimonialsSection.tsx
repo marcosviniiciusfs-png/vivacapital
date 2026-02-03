@@ -1,38 +1,71 @@
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useRef, useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+// Import client images
+import cliente1 from "@/assets/clientes/cliente-1.jpeg";
+import cliente2 from "@/assets/clientes/cliente-2.jpeg";
+import cliente3 from "@/assets/clientes/cliente-3.jpeg";
+import cliente4 from "@/assets/clientes/cliente-4.jpeg";
+import cliente5 from "@/assets/clientes/cliente-5.jpeg";
+import cliente6 from "@/assets/clientes/cliente-6.jpeg";
+import cliente7 from "@/assets/clientes/cliente-7.jpeg";
+import cliente8 from "@/assets/clientes/cliente-8.jpeg";
+import cliente9 from "@/assets/clientes/cliente-9.jpeg";
+import cliente10 from "@/assets/clientes/cliente-10.jpeg";
+
+const clientImages = [
+  cliente1,
+  cliente2,
+  cliente3,
+  cliente4,
+  cliente5,
+  cliente6,
+  cliente7,
+  cliente8,
+  cliente9,
+  cliente10,
+];
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
-  const testimonials = [
-    {
-      name: "Família Oliveira",
-      type: "Van Comercial Entregue",
-      text: "Realizei meu sonho com a ajuda da CréditoFácil. O processo foi rápido, transparente e sem burocracias. Recomendo para todos que querem conquistar seus objetivos!",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=400&fit=crop"
-    },
-    {
-      name: "Carlos Mendes",
-      type: "Casa Própria",
-      text: "Depois de anos economizando, consegui financiar minha casa própria. A equipe da CréditoFácil me ajudou a encontrar as melhores condições. Muito obrigado!",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop"
-    },
-    {
-      name: "Marina Santos",
-      type: "Carro Novo",
-      text: "Simulei online e recebi todas as informações no WhatsApp. Em poucos dias estava com meu carro zero! Processo muito fácil e confiável.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop"
-    }
-  ];
+  const autoplayPlugin = useRef(
+    Autoplay({
+      delay: 3000,
+      stopOnInteraction: true,
+      stopOnMouseEnter: true,
+      stopOnFocusIn: true,
+    })
+  );
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
+  useEffect(() => {
+    if (!api) return;
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollPrev = useCallback(() => {
+    api?.scrollPrev();
+  }, [api]);
+
+  const scrollNext = useCallback(() => {
+    api?.scrollNext();
+  }, [api]);
 
   return (
     <section className="py-16 bg-background">
@@ -46,70 +79,87 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card rounded-2xl shadow-xl p-8 md:p-12 relative">
-            <Quote className="absolute top-8 left-8 w-12 h-12 text-primary/20" />
-            
-            <div className="grid md:grid-cols-[300px,1fr] gap-8 items-center">
-              <div className="mx-auto">
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="w-64 h-64 object-cover rounded-xl shadow-lg"
-                />
-              </div>
+        <div className="max-w-6xl mx-auto relative">
+          {/* Navigation Buttons - Desktop */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={scrollPrev}
+            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 rounded-full bg-background/80 backdrop-blur-sm hidden md:flex"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
 
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-primary mb-1">
-                    Cliente Contemplado
-                  </h3>
-                  <p className="text-lg font-semibold text-foreground">
-                    {testimonials[currentIndex].type}
-                  </p>
-                </div>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={scrollNext}
+            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10 rounded-full bg-background/80 backdrop-blur-sm hidden md:flex"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
 
-                <p className="text-muted-foreground leading-relaxed text-lg italic">
-                  "{testimonials[currentIndex].text}"
-                </p>
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[autoplayPlugin.current]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {clientImages.map((image, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="overflow-hidden rounded-xl shadow-lg">
+                    <img
+                      src={image}
+                      alt={`Cliente contemplado ${index + 1}`}
+                      className="w-full h-64 md:h-80 object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
 
-                <p className="text-primary font-semibold pt-4">
-                  — {testimonials[currentIndex].name}
-                </p>
-              </div>
-            </div>
+          {/* Dots Indicator */}
+          <div className="flex justify-center items-center gap-2 mt-6">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === current
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-border hover:bg-muted-foreground"
+                }`}
+                aria-label={`Ir para slide ${index + 1}`}
+              />
+            ))}
+          </div>
 
-            <div className="flex justify-center items-center gap-4 mt-8">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrev}
-                className="rounded-full"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </Button>
-
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      index === currentIndex ? "w-8 bg-primary" : "w-2 bg-border"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                className="rounded-full"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </Button>
-            </div>
+          {/* Mobile Navigation */}
+          <div className="flex justify-center items-center gap-4 mt-4 md:hidden">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={scrollPrev}
+              className="rounded-full"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={scrollNext}
+              className="rounded-full"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
           </div>
         </div>
       </div>
