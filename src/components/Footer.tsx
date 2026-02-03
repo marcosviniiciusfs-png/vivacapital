@@ -1,4 +1,4 @@
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Facebook } from "lucide-react";
 import maltaLogo from "@/assets/malta-logo.png";
 
 const Footer = () => {
@@ -11,10 +11,17 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-4">
               <img src={maltaLogo} alt="Malta Consórcios" className="h-12 w-auto" />
             </div>
-            <p className="text-white/90 leading-relaxed">
-              Sua parceira de confiança para realizar o sonho da casa própria e do carro novo. 
-              Mais de 1000 famílias contempladas.
-            </p>
+            <div className="flex items-center gap-4 mt-2">
+              <a 
+                href="https://www.facebook.com/maltainvestimentosc?mibextid=wwXIfr&rdid=0yXJ3G3JNtxKmWSN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BxmFUQvT7%2F%3Fmibextid%3DwwXIfr#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors"
+                aria-label="Facebook da Malta Consórcios"
+              >
+                <Facebook className="w-8 h-8" />
+              </a>
+            </div>
           </div>
 
           {/* Contato */}
