@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import maltaLogo from "@/assets/malta-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,38 +15,35 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--header-footer))] shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">C</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">CréditoFácil</span>
+          <img src={maltaLogo} alt="Malta Consórcios" className="h-10 w-auto" />
         </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-6">
           <button
             onClick={() => scrollToSection("inicio")}
-            className="text-foreground hover:text-primary transition-colors"
+            className="text-white hover:text-white/80 transition-colors"
           >
             Início
           </button>
           <button
             onClick={() => scrollToSection("simulador")}
-            className="text-foreground hover:text-primary transition-colors"
+            className="text-white hover:text-white/80 transition-colors"
           >
             Simulador
           </button>
           <button
             onClick={() => scrollToSection("beneficios")}
-            className="text-foreground hover:text-primary transition-colors"
+            className="text-white hover:text-white/80 transition-colors"
           >
             Benefícios
           </button>
           <button
             onClick={() => scrollToSection("contato")}
-            className="text-foreground hover:text-primary transition-colors"
+            className="text-white hover:text-white/80 transition-colors"
           >
             Contato
           </button>
@@ -55,7 +53,7 @@ const Header = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden text-white hover:bg-white/10"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -64,29 +62,29 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border">
+        <div className="md:hidden bg-[hsl(var(--header-footer))]">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-primary transition-colors text-left py-2"
+              className="text-white hover:text-white/80 transition-colors text-left py-2"
             >
               Início
             </button>
             <button
               onClick={() => scrollToSection("simulador")}
-              className="text-foreground hover:text-primary transition-colors text-left py-2"
+              className="text-white hover:text-white/80 transition-colors text-left py-2"
             >
               Simulador
             </button>
             <button
               onClick={() => scrollToSection("beneficios")}
-              className="text-foreground hover:text-primary transition-colors text-left py-2"
+              className="text-white hover:text-white/80 transition-colors text-left py-2"
             >
               Benefícios
             </button>
             <button
               onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-primary transition-colors text-left py-2"
+              className="text-white hover:text-white/80 transition-colors text-left py-2"
             >
               Contato
             </button>
