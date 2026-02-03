@@ -1,75 +1,52 @@
 
-
-# Plano: Aplicar Cor Laranja aos Elementos e Remover Telefone Duplicado
+# Plano: Atualizar Webhook URL do Formulário
 
 ## Resumo
-Vou fazer duas alterações principais:
-1. Aplicar a cor laranja (mesma do cabeçalho/rodapé) aos ícones da seção de benefícios, à barra de progresso e aos botões do formulário
-2. Remover um dos números de telefone duplicados na seção "Fale Conosco" do rodapé
+Vou atualizar a URL do webhook no componente `Simulator.tsx` para o novo endereço fornecido. A estrutura JSON já está implementada corretamente e corresponde ao formato solicitado.
 
-## Alterações Detalhadas
+## Alteração
 
-### 1. Arquivo: `src/index.css`
-Adicionar uma nova variável CSS para a cor laranja reutilizável:
-```css
---orange: 6 93% 62%;
+### Arquivo: `src/components/Simulator.tsx`
+
+**Linha 94 - Alterar URL do webhook:**
+```typescript
+// De:
+const webhookUrl = "https://hook.us1.make.com/oot99hzy5i0ycokb712jr592sxv4b2pt";
+
+// Para:
+const webhookUrl = "https://hook.us1.make.com/m60b3l3wcknirc4fc7ezy3553yso5jih";
 ```
 
-### 2. Arquivo: `tailwind.config.ts`
-Adicionar a cor laranja ao tema do Tailwind para fácil uso:
-```js
-orange: {
-  DEFAULT: "hsl(var(--orange))",
+## Estrutura JSON Atual (já implementada corretamente)
+
+O código atual já envia os dados no formato JSON correto:
+
+```json
+{
+  "Data de Entrada": "2026-02-03",
+  "Nome Completo": "João Silva",
+  "WhatsApp": "(81) 99999-9999",
+  "Tipo de Bem": "Imóvel",
+  "Valor Pretendido (R$)": "R$ 300.000,00",
+  "Valor de Entrada (R$)": "R$ 50.000,00" ou "Não tem",
+  "Parcela Ideal (R$)": "R$ 2.500,00",
+  "Cidade": "Recife"
 }
 ```
 
-### 3. Arquivo: `src/components/ui/progress.tsx`
-Alterar a cor da barra de progresso de `bg-primary` para `bg-[hsl(var(--header-footer))]` (laranja)
+## Mapeamento dos Campos do Formulário
 
-### 4. Arquivo: `src/components/Simulator.tsx`
-Alterar os botões "Próximo" e "Finalizar Simulação":
-- De: `bg-primary hover:bg-primary-hover`
-- Para: `bg-[hsl(var(--header-footer))] hover:bg-[hsl(6,93%,55%)]`
+| Campo no JSON | Campo no Formulário |
+|---------------|---------------------|
+| Data de Entrada | Data atual (gerada automaticamente) |
+| Nome Completo | Nome completo |
+| WhatsApp | WhatsApp para contato |
+| Tipo de Bem | Qual tipo de bem você deseja adquirir? |
+| Valor Pretendido (R$) | Qual o valor do crédito que deseja simular? |
+| Valor de Entrada (R$) | Tem valor de entrada? (valor ou "Não tem") |
+| Parcela Ideal (R$) | Qual a parcela mensal ideal pra você? |
+| Cidade | Qual cidade você reside? |
 
-Alterar os botões de seleção "Sim" quando selecionados para usar a cor laranja
+## Quando o Envio Acontece
 
-### 5. Arquivo: `src/components/BenefitsSection.tsx`
-Alterar a cor dos ícones:
-- De: `text-primary` e `bg-primary/10`
-- Para: `text-[hsl(var(--header-footer))]` e `bg-[hsl(var(--header-footer))]/10`
-
-### 6. Arquivo: `src/components/Footer.tsx`
-Remover a seção duplicada de Telefone (linhas 32-38), mantendo apenas o WhatsApp:
-
-**Antes:**
-```
-Fale Conosco:
-├── Telefone: (81) 99483-6614
-└── WhatsApp: (81) 99483-6614
-```
-
-**Depois:**
-```
-Fale Conosco:
-└── WhatsApp: (81) 99483-6614
-```
-
-## Resultado Visual
-
-```text
-┌─────────────────────────────────────────────┐
-│  BARRA DE PROGRESSO                         │
-│  [████████████░░░░░░░░]  ← Laranja          │
-├─────────────────────────────────────────────┤
-│  BOTÕES DO FORMULÁRIO                       │
-│  [    Próximo    ]       ← Laranja          │
-│  [Finalizar Simulação]   ← Laranja          │
-├─────────────────────────────────────────────┤
-│  ÍCONES DE BENEFÍCIOS                       │
-│  (💬) (💰) (📄)          ← Laranja          │
-├─────────────────────────────────────────────┤
-│  RODAPÉ - FALE CONOSCO                      │
-│  WhatsApp: (81) 99483-6614  ← Apenas 1 item │
-└─────────────────────────────────────────────┘
-```
-
+O request é enviado quando o usuário clica no botão "Finalizar Simulação" após preencher todos os campos obrigatórios.
