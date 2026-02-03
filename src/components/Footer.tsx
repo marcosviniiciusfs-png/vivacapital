@@ -10,9 +10,14 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo e Descrição */}
           <div>
-            <div className="flex items-center gap-4 mb-4">
-              <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-36 w-auto" />
-              <img src={logoFooter1} alt="Malta Consórcios" className="h-12 w-auto" />
+            <div className="flex flex-col items-start gap-2 mb-4">
+              <div className="flex items-center gap-4">
+                <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-16 w-auto" />
+                <img src={logoFooter1} alt="Malta Consórcios" className="h-12 w-auto" />
+              </div>
+              <p className="text-white/90 text-sm text-center max-w-[200px]">
+                Empresa autorizada e fiscalizada pelo Banco Central do Brasil
+              </p>
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a 
