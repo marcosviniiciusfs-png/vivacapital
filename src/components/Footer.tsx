@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div>
             <div className="flex items-center gap-4 mb-4">
-              <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-12 w-auto" />
+              <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-36 w-auto" />
               <img src={logoFooter1} alt="Malta Consórcios" className="h-12 w-auto" />
             </div>
             <div className="flex items-center gap-4 mt-2">
