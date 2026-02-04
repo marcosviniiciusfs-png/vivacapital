@@ -1,4 +1,4 @@
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Instagram } from "lucide-react";
 import logoFooter1 from "@/assets/logo-footer-1.png";
 import logoBancoCentral from "@/assets/logo-banco-central.png";
 import facebookIcon from "@/assets/facebook.png";
@@ -29,6 +29,15 @@ const Footer = () => {
               >
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
+              <a 
+                href="https://www.instagram.com/maltainvestimentos?igsh=d2Nld2YyYzFxbjhs&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors"
+                aria-label="Instagram da Malta Consórcios"
+              >
+                <Instagram className="w-8 h-8" />
+              </a>
             </div>
           </div>
 
@@ -41,6 +50,13 @@ const Footer = () => {
                 <div>
                   <p className="font-semibold">WhatsApp</p>
                   <p className="text-white/90">(81) 99483-6614</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold">Telefone Fixo</p>
+                  <p className="text-white/90">(81) 3046-2832</p>
                 </div>
               </div>
             </div>
