@@ -28,6 +28,7 @@ interface SimulatorData {
 
 const Simulator = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState<SimulatorData>({
@@ -91,6 +92,9 @@ const Simulator = () => {
   };
 
   const handleFinish = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     const webhookUrl = "https://hook.us1.make.com/m60b3l3wcknirc4fc7ezy3553yso5jih";
     
     // Prepare data for webhook
@@ -140,6 +144,7 @@ const Simulator = () => {
       }
     } catch (error) {
       console.error("Erro ao enviar para webhook:", error);
+      setIsSubmitting(false);
       toast({
         title: "Erro ao enviar simulação",
         description: "Por favor, tente novamente.",
@@ -363,10 +368,10 @@ const Simulator = () => {
               ) : (
                 <Button
                   onClick={handleFinish}
-                  disabled={!canProceed()}
+                  disabled={!canProceed() || isSubmitting}
                   className="bg-orange hover:bg-orange/90"
                 >
-                  Finalizar Simulação
+                  {isSubmitting ? "Enviando..." : "Finalizar Simulação"}
                 </Button>
               )}
             </div>
