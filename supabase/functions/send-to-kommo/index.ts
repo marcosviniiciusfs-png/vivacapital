@@ -183,6 +183,21 @@ serve(async (req) => {
       console.error(`[${traceId}] Erro ao adicionar nota:`, err);
     }
 
+    // --- Force lead into correct pipeline/status (override Kommo automations) ---
+    console.log(`[${traceId}] Aguardando 2s para automações do Kommo...`);
+    await new Promise((r) => setTimeout(r, 2000));
+
+    const patchPayload = { pipeline_id: PIPELINE_ID, status_id: STATUS_ID };
+    try {
+      const patchRes = await fetchWithRetry(
+        `https://${KOMMO_API_DOMAIN}/api/v4/leads/${leadId}`,
+        { method: 'PATCH', headers: authHeaders, body: JSON.stringify(patchPayload) }
+      );
+      console.log(`[${traceId}] PATCH forçado: ${patchRes.status}`);
+    } catch (err) {
+      console.error(`[${traceId}] Erro no PATCH forçado:`, err);
+    }
+
     // --- Verify lead in correct pipeline/status ---
     let verified = false;
     try {
