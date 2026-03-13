@@ -16,10 +16,6 @@ import cliente3 from "@/assets/clientes/cliente-3.jpeg";
 import cliente4 from "@/assets/clientes/cliente-4.jpeg";
 import cliente5 from "@/assets/clientes/cliente-5.jpeg";
 import cliente6 from "@/assets/clientes/cliente-6.jpeg";
-import cliente7 from "@/assets/clientes/cliente-7.jpeg";
-import cliente8 from "@/assets/clientes/cliente-8.jpeg";
-import cliente9 from "@/assets/clientes/cliente-9.jpeg";
-import cliente10 from "@/assets/clientes/cliente-10.jpeg";
 
 const clientImages = [
   cliente1,
@@ -28,10 +24,6 @@ const clientImages = [
   cliente4,
   cliente5,
   cliente6,
-  cliente7,
-  cliente8,
-  cliente9,
-  cliente10,
 ];
 
 const TestimonialsSection = () => {
