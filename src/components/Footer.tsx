@@ -1,8 +1,7 @@
 import { Phone, MapPin, Clock, Instagram } from "lucide-react";
-import vivaCapitalLogo from "@/assets/viva-capital-logo.png";
+import logoFooter1 from "@/assets/logo-footer-1.png";
 import logoBancoCentral from "@/assets/logo-banco-central.png";
 import facebookIcon from "@/assets/facebook.png";
-
 
 const Footer = () => {
   return (
@@ -14,29 +13,29 @@ const Footer = () => {
             <div className="flex flex-col items-center md:items-start gap-2 mb-4">
               <div className="flex items-center gap-4">
                 <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-16 w-auto" />
-                <img src={vivaCapitalLogo} alt="Viva Capital" className="h-12 w-auto" />
+                
               </div>
               <p className="text-white/90 text-sm text-center max-w-[200px]">
                 Empresa autorizada e fiscalizada pelo Banco Central do Brasil
               </p>
             </div>
             <div className="flex items-center gap-4 mt-2">
-              <a 
+              <a
                 href="https://www.facebook.com/maltainvestimentosc?mibextid=wwXIfr&rdid=0yXJ3G3JNtxKmWSN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BxmFUQvT7%2F%3Fmibextid%3DwwXIfr#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Facebook da Malta Consórcios"
-              >
+                aria-label="Facebook da Malta Consórcios">
+                
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
-              <a 
+              <a
                 href="https://www.instagram.com/maltainvestimentos?igsh=d2Nld2YyYzFxbjhs&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Instagram da Malta Consórcios"
-              >
+                aria-label="Instagram da Malta Consórcios">
+                
                 <Instagram className="w-8 h-8" />
               </a>
             </div>
@@ -107,8 +106,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 };
 
 export default Footer;
