@@ -14,11 +14,11 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
-                href="https://www.facebook.com/maltainvestimentosc?mibextid=wwXIfr&rdid=0yXJ3G3JNtxKmWSN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BxmFUQvT7%2F%3Fmibextid%3DwwXIfr#"
+                href="https://www.facebook.com/profile.php?id=61579785880482#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Facebook da Malta Consórcios">
+                aria-label="Facebook da Viva Capital">
                 
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
