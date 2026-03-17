@@ -14,20 +14,20 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
-                href="https://www.facebook.com/maltainvestimentosc?mibextid=wwXIfr&rdid=0yXJ3G3JNtxKmWSN&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BxmFUQvT7%2F%3Fmibextid%3DwwXIfr#"
+                href="https://www.facebook.com/profile.php?id=61579785880482#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Facebook da Malta Consórcios">
+                aria-label="Facebook da Viva Capital">
                 
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
               <a
-                href="https://www.instagram.com/maltainvestimentos?igsh=d2Nld2YyYzFxbjhs&utm_source=qr"
+                href="https://www.instagram.com/vivacapitalconsorcios?igsh=NWx0NHR3dHZsZG12"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Instagram da Malta Consórcios">
+                aria-label="Instagram da Viva Capital">
                 
                 <Instagram className="w-8 h-8" />
               </a>
@@ -42,14 +42,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-semibold">WhatsApp</p>
-                  <p className="text-white/90">(81) 99483-6614</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold">Telefone Fixo</p>
-                  <p className="text-white/90">(81) 3046-2832</p>
+                  <p className="text-white/90">(85) 98972-6961</p>
                 </div>
               </div>
             </div>
@@ -62,10 +55,9 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold">EMPRESARIAL LAURA MACIEL</p>
                   <p className="text-white/90">
-                    Rua Professora Laura Maciel, 23 – Universitário<br />
-                    Caruaru/PE
+                    Rua Sátiro Dias, 387 – Montese<br />
+                    Fortaleza-CE
                   </p>
                 </div>
               </div>
@@ -86,7 +78,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/90 text-sm">
-              © 2025 Malta Consórcios. Todos os direitos reservados.
+              © 2025 Viva Capital. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-sm">
               <button className="text-white/90 hover:text-white transition-colors">
