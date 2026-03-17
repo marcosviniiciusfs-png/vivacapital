@@ -3,6 +3,7 @@ import vivaCapitalLogo from "@/assets/viva-capital-logo.png";
 import logoBancoCentral from "@/assets/logo-banco-central.png";
 import facebookIcon from "@/assets/facebook.png";
 
+
 const Footer = () => {
   return (
     <footer id="contato" className="bg-[hsl(var(--header-footer))] text-white">
