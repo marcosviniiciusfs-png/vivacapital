@@ -23,11 +23,11 @@ const Footer = () => {
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
               <a
-                href="https://www.instagram.com/maltainvestimentos?igsh=d2Nld2YyYzFxbjhs&utm_source=qr"
+                href="https://www.instagram.com/vivacapitalconsorcios?igsh=NWx0NHR3dHZsZG12"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Instagram da Malta Consórcios">
+                aria-label="Instagram da Viva Capital">
                 
                 <Instagram className="w-8 h-8" />
               </a>
