@@ -11,13 +11,7 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div>
             <div className="flex flex-col items-center md:items-start gap-2 mb-4">
-              <div className="flex items-center gap-4">
-                <img src={logoBancoCentral} alt="Banco Central do Brasil" className="h-16 w-auto" />
-                
-              </div>
-              <p className="text-white/90 text-sm text-center max-w-[200px]">
-                Empresa autorizada e fiscalizada pelo Banco Central do Brasil
-              </p>
+              <img src={vivaCapitalLogo} alt="Viva Capital" className="h-20 w-auto" />
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
