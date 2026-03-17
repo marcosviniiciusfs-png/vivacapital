@@ -55,10 +55,9 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold">EMPRESARIAL LAURA MACIEL</p>
                   <p className="text-white/90">
-                    Rua Professora Laura Maciel, 23 – Universitário<br />
-                    Caruaru/PE
+                    Rua Sátiro Dias, 387 – Montese<br />
+                    Fortaleza-CE
                   </p>
                 </div>
               </div>
