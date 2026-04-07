@@ -18,6 +18,7 @@ import {
 
 interface SimulatorData {
   propertyType: string;
+  acquisitionTime: string;
   creditAmount: string;
   hasDownPayment: string;
   downPaymentAmount: string;
@@ -34,6 +35,7 @@ const Simulator = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState<SimulatorData>({
     propertyType: "",
+    acquisitionTime: "",
     creditAmount: "",
     hasDownPayment: "",
     downPaymentAmount: "",
@@ -43,7 +45,7 @@ const Simulator = () => {
     whatsapp: ""
   });
 
-  const totalSteps = 7;
+  const totalSteps = 8;
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
   const formatCurrency = (value: string) => {
@@ -63,22 +65,23 @@ const Simulator = () => {
   const canProceed = () => {
     switch (currentStep) {
       case 0: return formData.propertyType !== "";
-      case 1: return formData.creditAmount !== "";
-      case 2: 
+      case 1: return formData.acquisitionTime !== "";
+      case 2: return formData.creditAmount !== "";
+      case 3: 
         if (formData.hasDownPayment === "Sim") {
           return formData.downPaymentAmount !== "";
         }
         return formData.hasDownPayment !== "";
-      case 3: return formData.monthlyPayment !== "";
-      case 4: return formData.city.trim() !== "";
-      case 5: return formData.fullName.trim() !== "";
-      case 6: return formData.whatsapp.replace(/\D/g, "").length === 11;
+      case 4: return formData.monthlyPayment !== "";
+      case 5: return formData.city.trim() !== "";
+      case 6: return formData.fullName.trim() !== "";
+      case 7: return formData.whatsapp.replace(/\D/g, "").length === 11;
       default: return false;
     }
   };
 
   const handleNext = () => {
-    if (currentStep === 2 && formData.hasDownPayment === "Não") {
+    if (currentStep === 3 && formData.hasDownPayment === "Não") {
       setFormData({ ...formData, downPaymentAmount: "" });
     }
     if (currentStep < totalSteps - 1) {
@@ -172,6 +175,7 @@ const Simulator = () => {
         }
         setFormData({
           propertyType: "",
+          acquisitionTime: "",
           creditAmount: "",
           hasDownPayment: "",
           downPaymentAmount: "",
@@ -226,6 +230,30 @@ const Simulator = () => {
       case 1:
         return (
           <div className="space-y-4">
+            <Label className="text-lg font-semibold text-primary text-center block mb-6">
+              Em até quanto tempo você deseja adquirir o seu bem?
+            </Label>
+            <Select
+              value={formData.acquisitionTime}
+              onValueChange={(value) => setFormData({ ...formData, acquisitionTime: value })}
+            >
+              <SelectTrigger className="text-lg p-6 max-w-md mx-auto">
+                <SelectValue placeholder="Selecione uma opção" />
+              </SelectTrigger>
+              <SelectContent className="bg-card">
+                <SelectItem value="Até 6 meses">Até 6 meses</SelectItem>
+                <SelectItem value="6 a 12 meses">6 a 12 meses</SelectItem>
+                <SelectItem value="1 a 2 anos">1 a 2 anos</SelectItem>
+                <SelectItem value="2 a 3 anos">2 a 3 anos</SelectItem>
+                <SelectItem value="Acima de 3 anos">Acima de 3 anos</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className="space-y-4">
             <Label htmlFor="creditAmount" className="text-lg font-semibold text-primary text-center block mb-6">
               Qual o valor do crédito que deseja simular?
             </Label>
@@ -239,7 +267,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 2:
+      case 3:
         return (
           <div className="space-y-4">
             <Label className="text-lg font-semibold text-primary text-center block mb-6">
@@ -285,7 +313,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 3:
+      case 4:
         return (
           <div className="space-y-4">
             <Label htmlFor="monthlyPayment" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -301,7 +329,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 4:
+      case 5:
         return (
           <div className="space-y-4">
             <Label htmlFor="city" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -317,7 +345,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 5:
+      case 6:
         return (
           <div className="space-y-4">
             <Label htmlFor="fullName" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -333,7 +361,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 6:
+      case 7:
         return (
           <div className="space-y-4">
             <Label htmlFor="whatsapp" className="text-lg font-semibold text-primary text-center block mb-6">
