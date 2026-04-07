@@ -175,6 +175,7 @@ const Simulator = () => {
         }
         setFormData({
           propertyType: "",
+          acquisitionTime: "",
           creditAmount: "",
           hasDownPayment: "",
           downPaymentAmount: "",
@@ -227,6 +228,30 @@ const Simulator = () => {
         );
 
       case 1:
+        return (
+          <div className="space-y-4">
+            <Label className="text-lg font-semibold text-primary text-center block mb-6">
+              Em até quanto tempo você deseja adquirir o seu bem?
+            </Label>
+            <Select
+              value={formData.acquisitionTime}
+              onValueChange={(value) => setFormData({ ...formData, acquisitionTime: value })}
+            >
+              <SelectTrigger className="text-lg p-6 max-w-md mx-auto">
+                <SelectValue placeholder="Selecione uma opção" />
+              </SelectTrigger>
+              <SelectContent className="bg-card">
+                <SelectItem value="Até 6 meses">Até 6 meses</SelectItem>
+                <SelectItem value="6 a 12 meses">6 a 12 meses</SelectItem>
+                <SelectItem value="1 a 2 anos">1 a 2 anos</SelectItem>
+                <SelectItem value="2 a 3 anos">2 a 3 anos</SelectItem>
+                <SelectItem value="Acima de 3 anos">Acima de 3 anos</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        );
+
+      case 2:
         return (
           <div className="space-y-4">
             <Label htmlFor="creditAmount" className="text-lg font-semibold text-primary text-center block mb-6">
