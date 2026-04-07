@@ -267,7 +267,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 2:
+      case 3:
         return (
           <div className="space-y-4">
             <Label className="text-lg font-semibold text-primary text-center block mb-6">
@@ -313,7 +313,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 3:
+      case 4:
         return (
           <div className="space-y-4">
             <Label htmlFor="monthlyPayment" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -329,7 +329,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 4:
+      case 5:
         return (
           <div className="space-y-4">
             <Label htmlFor="city" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -345,7 +345,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 5:
+      case 6:
         return (
           <div className="space-y-4">
             <Label htmlFor="fullName" className="text-lg font-semibold text-primary text-center block mb-6">
@@ -361,7 +361,7 @@ const Simulator = () => {
           </div>
         );
 
-      case 6:
+      case 7:
         return (
           <div className="space-y-4">
             <Label htmlFor="whatsapp" className="text-lg font-semibold text-primary text-center block mb-6">
