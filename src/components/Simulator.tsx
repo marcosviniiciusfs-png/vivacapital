@@ -18,6 +18,7 @@ import {
 
 interface SimulatorData {
   propertyType: string;
+  acquisitionTime: string;
   creditAmount: string;
   hasDownPayment: string;
   downPaymentAmount: string;
@@ -34,6 +35,7 @@ const Simulator = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState<SimulatorData>({
     propertyType: "",
+    acquisitionTime: "",
     creditAmount: "",
     hasDownPayment: "",
     downPaymentAmount: "",
@@ -43,7 +45,7 @@ const Simulator = () => {
     whatsapp: ""
   });
 
-  const totalSteps = 7;
+  const totalSteps = 8;
   const progress = ((currentStep + 1) / totalSteps) * 100;
 
   const formatCurrency = (value: string) => {
@@ -63,22 +65,23 @@ const Simulator = () => {
   const canProceed = () => {
     switch (currentStep) {
       case 0: return formData.propertyType !== "";
-      case 1: return formData.creditAmount !== "";
-      case 2: 
+      case 1: return formData.acquisitionTime !== "";
+      case 2: return formData.creditAmount !== "";
+      case 3: 
         if (formData.hasDownPayment === "Sim") {
           return formData.downPaymentAmount !== "";
         }
         return formData.hasDownPayment !== "";
-      case 3: return formData.monthlyPayment !== "";
-      case 4: return formData.city.trim() !== "";
-      case 5: return formData.fullName.trim() !== "";
-      case 6: return formData.whatsapp.replace(/\D/g, "").length === 11;
+      case 4: return formData.monthlyPayment !== "";
+      case 5: return formData.city.trim() !== "";
+      case 6: return formData.fullName.trim() !== "";
+      case 7: return formData.whatsapp.replace(/\D/g, "").length === 11;
       default: return false;
     }
   };
 
   const handleNext = () => {
-    if (currentStep === 2 && formData.hasDownPayment === "Não") {
+    if (currentStep === 3 && formData.hasDownPayment === "Não") {
       setFormData({ ...formData, downPaymentAmount: "" });
     }
     if (currentStep < totalSteps - 1) {
